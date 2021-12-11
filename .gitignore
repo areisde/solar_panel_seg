@@ -1,2 +1,3 @@
 .*
-!/.gitignore
+.ipynb_checkpoints
+packages/.ipynb_checkpoints
