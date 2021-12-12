@@ -17,6 +17,8 @@ def get_training_augmentation():
 
         albu.augmentations.geometric.transforms.Perspective(p=0.5),
 
+        albu.RandomBrightness(p=1),
+
         albu.RandomContrast(p=0.7),
         
        # albu.OneOf(
