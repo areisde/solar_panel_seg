@@ -47,7 +47,7 @@ class Dataset(BaseDataset):
         
         # read data
         image = cv2.imread(self.images_fps[i])
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) 
         mask = cv2.imread(self.masks_fps[i], 0)
         
         # extract certain classes from mask (e.g. cars)
