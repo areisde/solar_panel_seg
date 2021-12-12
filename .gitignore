@@ -1,0 +1,5 @@
+.*
+.ipynb_checkpoints
+packages/.ipynb_checkpoints
+data/.ipynb_checkpoints
+data/.DS_Store
