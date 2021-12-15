@@ -1,6 +1,7 @@
 # Imports
 import albumentations as albu
 import matplotlib.pyplot as plt
+import cv2
 
 
 def get_training_augmentation():
@@ -15,7 +16,6 @@ def get_training_augmentation():
         albu.augmentations.geometric.transforms.Perspective(p=0.8),
         albu.RandomBrightness(p=0.5),
         albu.RandomContrast(p=0.5),
-        
     ]
     return albu.Compose(train_transform)
 
@@ -59,3 +59,13 @@ def visualize(**images):
         plt.title(' '.join(name.split('_')).title())
         plt.imshow(image)
     plt.show()
+    
+    
+def resize_img(img, percentage):
+    width = int(img.shape[1] * percentage / 100)
+    height = int(img.shape[0] * percentage / 100)
+    dim = (width, height)
+
+    # resize image
+    resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    return resized

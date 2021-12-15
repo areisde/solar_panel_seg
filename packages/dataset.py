@@ -3,6 +3,10 @@ import os
 import cv2
 import numpy as np
 from torch.utils.data import Dataset as BaseDataset
+from PIL import Image
+from packages.helpers import *
+
+
 
 """
 
@@ -33,7 +37,8 @@ class Dataset(BaseDataset):
             augmentation=None, 
             preprocessing=None,
     ):
-        self.ids = os.listdir(images_dir)
+
+        self.ids = [f for f in os.listdir(images_dir) if not f.startswith('.')]
         self.images_fps = [os.path.join(images_dir, image_id) for image_id in self.ids]
         self.masks_fps = [os.path.join(masks_dir, image_id) for image_id in self.ids]
         
@@ -48,7 +53,19 @@ class Dataset(BaseDataset):
         # read data
         image = cv2.imread(self.images_fps[i])
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) 
-        mask = cv2.imread(self.masks_fps[i], 0)
+        mask  = cv2.imread(self.masks_fps[i], 0)
+        
+        # Crop
+        image = image[0:480, 0:360]
+        mask = mask[0:480, 0:360]
+        
+        # Resize
+        #percentage = 70
+        #image = resize_img(image, percentage)
+        #mask  = resize_img(mask, percentage)
+        
+        #print(image.shape)
+
         
         # extract certain classes from mask (e.g. cars)
         masks = [(mask == v) for v in self.class_values]
