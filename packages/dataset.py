@@ -56,13 +56,19 @@ class Dataset(BaseDataset):
         mask  = cv2.imread(self.masks_fps[i], 0)
         
         # Crop
-        image = image[0:480, 0:360]
-        mask = mask[0:480, 0:360]
+        #image = image[0:480, 0:360]
+        #mask = mask[0:480, 0:360]
+        #image = image[0:320, 0:320]
+        #mask = mask[0:320, 0:320]
         
-        # Resize
-        #percentage = 70
-        #image = resize_img(image, percentage)
-        #mask  = resize_img(mask, percentage)
+        # Make images squared
+        image = make_it_squared(image)
+        mask  = make_it_squared(mask)
+        
+        # Make images squared
+        percentage = 60
+        image = resize_img(image, percentage)
+        mask  = resize_img(mask, percentage)
         
         #print(image.shape)
 
