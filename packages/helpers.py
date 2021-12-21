@@ -9,8 +9,8 @@ def get_training_augmentation():
 
         albu.HorizontalFlip(p=0.5),
         albu.VerticalFlip(p=0.5),
-        albu.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=0.5, border_mode=0, mask_value=1),
-        albu.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=0, mask_value=1),
+        albu.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=0.5, border_mode=0, mask_value=0),
+        albu.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=0, mask_value=0),
         #albu.RandomCrop(height=320, width=320, p=1),
         albu.augmentations.transforms.GaussNoise(p=0.2),
         albu.augmentations.geometric.transforms.Perspective(p=0.8),
@@ -57,8 +57,6 @@ def visualize(**images):
         plt.xticks([])
         plt.yticks([])
         plt.title(' '.join(name.split('_')).title())
-        if image.shape[2] == 2:
-            image = image[:,:,0]
         plt.imshow(image)
     plt.show()
     
