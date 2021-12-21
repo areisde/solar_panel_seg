@@ -1,0 +1,8 @@
+numpy>=1.20.1
+opencv-contrib-python>=4.5.4.60
+matplotlib>=3.3.4
+albumentations>=1.1.0
+segmentation-models-pytorch>=0.2.1
+
+#--find-links https://download.pytorch.org/whl/torch_stable.html
+torch -install-option='--torchvision cudatoolkit=11.3 -c pytorch --user'

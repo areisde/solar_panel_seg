@@ -16,3 +16,40 @@ For this project we will be inspiring ourselves from the following tutorial from
 Thanks to the different libraries used, combined with Pytorch, we will be able to easily implement very different architectures with different parameters and compare them.
 
 Given the dataset is pretty small, we will test data augmentation using a library called 'Albumentations'.
+
+
+
+### 3. Training and running
+
+#### 3.1 Installation
+The instructions below have been tested on Windows 10 (x86). They make use of the environment manager [Conda](http://conda.io/), although alternatives can also be employed with respective adaptations.
+
+#### 3.2 Environment setup
+
+1. Install dependencies
+```bash
+sudo apt update && sudo apt install -y build-essential gdal-bin libgdal-dev
+```
+
+2. Download and install [Conda](http://conda.io/) (Miniconda is enough) and create a new environment:
+
+```bash
+conda create -n solar_panels python=3.8 -y
+conda activate solar_panels
+```
+
+3. Install basic requirements:
+```bash
+pip install -U -r requirements.txt
+conda install -c conda-forge --name solar_panels ipykernel -y # to run the jupyter notebooks
+```
+
+#### 3.3 Training
+
+To train the model, run the entire `Training.ipynb` notebook.
+
+
+#### 3.4 Predictions
+
+To make predictions, run the entire `inference.ipynb` notebook.
+
