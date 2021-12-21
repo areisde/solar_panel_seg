@@ -74,9 +74,9 @@ class Dataset(BaseDataset):
 
         
         # extract certain classes from mask (e.g. cars)
-        masks = [(mask == v) for v in self.class_values]
+        masks = [(mask != v) for v in self.class_values]
         mask = np.stack(masks, axis=-1).astype('float')
-        
+
         # apply augmentations
         if self.augmentation:
             sample = self.augmentation(image=image, mask=mask)
