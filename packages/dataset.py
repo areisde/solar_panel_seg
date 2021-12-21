@@ -27,7 +27,7 @@ class Dataset(BaseDataset):
     
     """
     
-    CLASSES = ['solar panel']
+    CLASSES = ['background', 'solar panel']
     
     def __init__(
             self, 

@@ -57,6 +57,8 @@ def visualize(**images):
         plt.xticks([])
         plt.yticks([])
         plt.title(' '.join(name.split('_')).title())
+        if image.shape[2] == 2:
+            image = image[:,:,0]
         plt.imshow(image)
     plt.show()
     
