@@ -36,6 +36,7 @@ class Dataset(BaseDataset):
             classes=None, 
             augmentation=None, 
             preprocessing=None,
+            mask_value=1
     ):
 
         self.ids = [f for f in os.listdir(images_dir) if not f.startswith('.')]
@@ -47,6 +48,8 @@ class Dataset(BaseDataset):
         
         self.augmentation = augmentation
         self.preprocessing = preprocessing
+
+        self.mask_value = mask_value
     
     def __getitem__(self, i):
         
@@ -74,7 +77,11 @@ class Dataset(BaseDataset):
 
         
         # extract certain classes from mask (e.g. cars)
-        masks = [(mask != v) for v in self.class_values]
+        if self.mask_value == 1:
+            masks = [(mask == v) for v in self.class_values]
+        else:
+            masks = [(mask != v) for v in self.class_values]
+
         mask = np.stack(masks, axis=-1).astype('float')
 
         # apply augmentations

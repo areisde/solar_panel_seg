@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 import cv2
 
 
-def get_training_augmentation():
+def get_training_augmentation(mask_value=1):
     train_transform = [
 
         albu.HorizontalFlip(p=0.5),
         albu.VerticalFlip(p=0.5),
-        albu.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=0.5, border_mode=0, mask_value=0),
-        albu.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=0, mask_value=0),
+        albu.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=0.5, border_mode=0, mask_value=mask_value),
+        albu.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=0, mask_value=mask_value),
         #albu.RandomCrop(height=320, width=320, p=1),
         albu.augmentations.transforms.GaussNoise(p=0.2),
         albu.augmentations.geometric.transforms.Perspective(p=0.8),
@@ -19,10 +19,10 @@ def get_training_augmentation():
     ]
     return albu.Compose(train_transform)
 
-def get_validation_augmentation():
+def get_validation_augmentation(mask_value=1):
     """Add paddings to make image shape divisible by 32"""
     test_transform = [
-        albu.PadIfNeeded(384, 480, border_mode=0, mask_value=1)
+        albu.PadIfNeeded(384, 480, border_mode=0, mask_value=mask_value)
     ]
     return albu.Compose(test_transform)
 
