@@ -55,23 +55,14 @@ class Dataset(BaseDataset):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB) 
         mask  = cv2.imread(self.masks_fps[i], 0)
         
-        # Crop
-        #image = image[0:480, 0:360]
-        #mask = mask[0:480, 0:360]
-        #image = image[0:320, 0:320]
-        #mask = mask[0:320, 0:320]
-        
         # Make images squared
         image = make_it_squared(image)
         mask  = make_it_squared(mask)
         
-        # Make images squared
+        # Make images smaller
         percentage = 60
         image = resize_img(image, percentage)
         mask  = resize_img(mask, percentage)
-        
-        #print(image.shape)
-
         
         # extract certain classes from mask (e.g. cars)
         masks = [(mask != v) for v in self.class_values]
