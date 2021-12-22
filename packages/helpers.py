@@ -9,8 +9,8 @@ def get_training_augmentation(mask_value=1):
 
         albu.HorizontalFlip(p=0.5),
         albu.VerticalFlip(p=0.5),
-        albu.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=0.5, border_mode=0, mask_value=mask_value),
-        albu.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=0, mask_value=mask_value),
+        albu.ShiftScaleRotate(scale_limit=0.5, rotate_limit=0, shift_limit=0.1, p=0.5, border_mode=0, mask_value=(not mask_value)),
+        albu.PadIfNeeded(min_height=320, min_width=320, always_apply=True, border_mode=cv2.BORDER_CONSTANT, mask_value=mask_value),
         #albu.RandomCrop(height=320, width=320, p=1),
         albu.augmentations.transforms.GaussNoise(p=0.2),
         albu.augmentations.geometric.transforms.Perspective(p=0.8),
