@@ -48,6 +48,7 @@ conda install -c conda-forge --name solar_panels ipykernel -y # to run the jupyt
 
 To train the model, open and run the `Training.ipynb` notebook. Specify whether you want the model to detect **solar panels** or **background** by setting the `MASK_VALUE` variable to either `PANELS` or `BACKGROUND`. For the training cell, choose for how many epochs you want to train the model. ***Ideally, this number should be a multiple of 100***, as the code relies on this fact to dump some additional information.
 
+The pre-trained models can be found [here](https://drive.google.com/file/d/1j4dyzU4gYuxcVlYQN_xshNza-xiT-cFM/view?usp=sharing).
 
 #### 3.4 Predictions
 
