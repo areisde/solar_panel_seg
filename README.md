@@ -53,3 +53,9 @@ To train the model, open and run the `Training.ipynb` notebook. Specify whether 
 
 To test the model and make some intial predictions, simply run the entire `inference.ipynb` notebook. Specify the the `MASK_VALUE` you used during training as well as the number of epochs, using the `EPOCHS` variable.
 
+### 4. Additional Features
+
+#### 4.1 Data set conversion
+
+The original dataset was converted from a `.tif` to a `.png` format using the `Dataset Adaptation.ipynb` notebook.
+
